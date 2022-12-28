@@ -5,11 +5,12 @@ const Counter = () => {
   const initialState = 0;
 
   function reducer(state, action) {
+    console.log(state, action);
     if (action.type === "increment") {
-      return state + 1
+      return state + action.payload;
     }
     else if (action.type === "decremnt") {
-      return state - 1
+      return state - action.payload;
     }
   }
 
@@ -25,9 +26,9 @@ const Counter = () => {
     }}>
       <Card style={{ width: '18rem' }}>
         <Card.Body className="text-center">
-          <Button onClick={() => dispatch({ type: "increment" })}>Increment</Button>
+          <Button onClick={() => dispatch({ type: "increment", payload: { count: 5 } })}>Increment</Button>
           <h3>{state}</h3>
-          <Button onClick={() => dispatch({ type: "decremnt" })}>Decrement</Button>
+          <Button onClick={() => dispatch({ type: "decremnt", payload: { count: 5 } })}>Decrement</Button>
         </Card.Body>
       </Card>
     </div>

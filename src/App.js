@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createContext, useState } from 'react';
+
 import Counter from './pages/Counter';
+import Form from './pages/Form';
 import Parent from './pages/Parent';
 import ShortForm from './pages/ShortForm';
 
@@ -19,7 +21,8 @@ function App() {
     // </CONTEXT_CONTAINER.Provider>
     <div>
       {/* <ShortForm /> */}
-      <Counter />
+      {/* <Counter /> */}
+      <Form />
     </div>
   );
 }
