@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Card } from "react-bootstrap";
+import { COUNTER_CONTEXT } from "../App";
 import Child from "./Child";
 
 const Parent = () => {
-  const [count, setCount] = useState(0)
+  const { count } = useContext(COUNTER_CONTEXT)
 
   return (
     <div>
@@ -19,8 +20,8 @@ const Parent = () => {
           </Card.Body>
         </Card>
       </div>
-      <Child count={count} setCount={setCount} />
-      <Child count={count} setCount={setCount} />
+
+
     </div>
   );
 }
