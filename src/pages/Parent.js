@@ -20,6 +20,7 @@ const Parent = () => {
         </Card>
       </div>
       <Child count={count} setCount={setCount} />
+      <Child count={count} setCount={setCount} />
     </div>
   );
 }
