@@ -1,7 +1,9 @@
+import Child from "./Child";
+
 const Parent = () => {
   return (
     <div>
-      Enter
+      <Child />
     </div>
   );
 }
