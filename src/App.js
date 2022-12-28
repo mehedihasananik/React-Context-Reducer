@@ -2,17 +2,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createContext, useState } from 'react';
 import Parent from './pages/Parent';
 
-export const COUNTER_CONTEXT = createContext();
+export const CONTEXT_CONTAINER = createContext();
 
 function App() {
   const [count, setCount] = useState(0);
-  const value = { count, setCount }
+  const value = {
+    count, setCount
+  }
   return (
-    <COUNTER_CONTEXT.Provider value={value}>
+    <CONTEXT_CONTAINER.Provider value={value}>
       <div>
         <Parent />
       </div>
-    </COUNTER_CONTEXT.Provider>
+    </CONTEXT_CONTAINER.Provider>
   );
 }
 

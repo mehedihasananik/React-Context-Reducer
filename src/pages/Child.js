@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
-import { COUNTER_CONTEXT } from "../App";
+import { CONTEXT_CONTAINER } from "../App";
 
 const Child = () => {
-  const { count, setCount } = useContext(COUNTER_CONTEXT)
-
+  const { count, setCount } = useContext(CONTEXT_CONTAINER)
   return (
     <div style={{
       display: "flex",
