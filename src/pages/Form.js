@@ -13,7 +13,6 @@ const Form = () => {
     feedback: "",
     term: "",
 
-
   }
   const reducer = (state, action) => {
     switch (action.type) {
@@ -60,7 +59,7 @@ const Form = () => {
             type='text'
             name='lastName'
             id='lastName'
-
+            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -71,7 +70,7 @@ const Form = () => {
             type='email'
             name='email'
             id='email'
-
+            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -83,7 +82,7 @@ const Form = () => {
                 id='male'
                 name='gender'
                 value='male'
-
+                onClick={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
               />
               <label className='ml-2 text-lg' for='male'>
                 Male
@@ -95,7 +94,7 @@ const Form = () => {
                 id='female'
                 name='gender'
                 value='female'
-
+                onClick={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
               />
               <label className='ml-2 text-lg' for='female'>
                 Female
@@ -107,7 +106,7 @@ const Form = () => {
                 id='other'
                 name='gender'
                 value='other'
-
+                onClick={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
               />
               <label className='ml-2 text-lg' for='other'>
                 Other
@@ -122,7 +121,7 @@ const Form = () => {
           <select
             name='education'
             id='education'
-
+            onChange={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           >
             <option value='SSC'>SSC</option>
             <option value='HSC'>HSC</option>
@@ -153,7 +152,7 @@ const Form = () => {
             id='feedback'
             cols='30'
             rows='4'
-
+            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           ></textarea>
         </div>
 
