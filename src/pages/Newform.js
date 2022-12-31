@@ -1,45 +1,9 @@
-import { useReducer } from "react";
-import { act } from "react-dom/test-utils";
-
-const Form = () => {
-
-  const initialState = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    gender: "",
-    education: "",
-    quantity: 0,
-    feedback: "",
-    term: "",
-
-
-  }
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "INPUT":
-        return {
-          ...state,
-          [action.payload.name]: action.payload.value
-        }
-      default:
-        return state
-    }
-  }
-
-  const [state, dispatch] = useReducer(reducer, initialState)
-
-
-  const submit = (event) => {
-    event.preventDefault();
-    console.log(state)
-  }
-
+const Newform = () => {
   return (
     <div className="text-center">
       <form
         className=''
-        onSubmit={submit}
+
       >
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='firstName'>
@@ -49,7 +13,7 @@ const Form = () => {
             type='text'
             name='firstName'
             id='firstName'
-            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
+
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -181,4 +145,4 @@ const Form = () => {
   );
 }
 
-export default Form;
+export default Newform;
