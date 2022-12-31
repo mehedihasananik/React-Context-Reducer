@@ -1,8 +1,11 @@
 import { useReducer } from "react";
 import { act } from "react-dom/test-utils";
+import { Link, useNavigate } from "react-router-dom";
 import { initiaState, reducer } from "../state/formReducer";
 
 const Myform = () => {
+
+  const navigate = useNavigate();
 
 
   const [state, dispatch] = useReducer(reducer, initiaState)
@@ -32,20 +35,8 @@ const Myform = () => {
               +
             </button>
           </div>
+
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='firstName'>
             First Name
@@ -171,6 +162,7 @@ const Myform = () => {
           </button>
         </div>
       </form>
+      <button onClick={() => navigate("/")}>Go to home Home</button>
     </div>
   );
 }
