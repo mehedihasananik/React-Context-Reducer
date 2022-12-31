@@ -1,28 +1,8 @@
 import { useReducer } from "react";
 import { act } from "react-dom/test-utils";
+import { initiaState, reducer } from "../state/formReducer";
 
 const Myform = () => {
-
-  const initiaState = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    gender: "",
-    education: "",
-    quantity: 0,
-    feedback: "",
-    term: false
-  }
-
-  const reducer = (state, action) => {
-
-    if (action.type === "INPUT") {
-      return {
-        ...state,
-        [action.payload.name]: action.payload.value
-      }
-    }
-  }
 
 
   const [state, dispatch] = useReducer(reducer, initiaState)
@@ -38,6 +18,34 @@ const Myform = () => {
         className=''
         onSubmit={submit}
       >
+
+        <div className='flex flex-col w-full max-w-xs'>
+          <label className='mb-3'>Number of PCs</label>
+          <div className='flex justify-between items-center gap-2 '>
+            <button onClick={() => dispatch({ type: "DECREMENT", payload: { count: 1 } })} className='bg-indigo-500 text-lg text-white rounded h-10 w-10 '>
+              -
+            </button>
+            <div className='border flex-1 flex justify-center items-center h-10 rounded-md border-gray-300'>
+              <div>{state.quantity}</div>
+            </div>
+            <button onClick={() => dispatch({ type: "INCREMENT", payload: { count: 1 } })} className='bg-indigo-500 text-lg text-white rounded h-10 w-10'>
+              +
+            </button>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='firstName'>
             First Name
@@ -127,20 +135,8 @@ const Myform = () => {
             <option value='graduate'>Graduate</option>
           </select>
         </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-3'>Number of PCs</label>
-          <div className='flex justify-between items-center gap-2 '>
-            <button className='bg-indigo-500 text-lg text-white rounded h-10 w-10 '>
-              -
-            </button>
-            <div className='border flex-1 flex justify-center items-center h-10 rounded-md border-gray-300'>
-              <span className='text-lg'>0</span>
-            </div>
-            <button className='bg-indigo-500 text-lg text-white rounded h-10 w-10'>
-              +
-            </button>
-          </div>
-        </div>
+
+        {/* count */}
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-3' for='feedback'>
             Feedback
@@ -161,6 +157,7 @@ const Myform = () => {
               type='checkbox'
               name='term'
               id='terms'
+              onClick={() => dispatch({ type: "TOGGLE" })}
 
             />
             <label for='terms'>I agree to terms and conditions</label>

@@ -1,8 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createContext, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Counter from './pages/Counter';
-import Myform from './pages/Newform';
+import Error from './pages/Error';
+import Home from './pages/Home';
+import Myform from './pages/Myform';
+
 
 import Parent from './pages/Parent';
 import ShortForm from './pages/ShortForm';
@@ -15,15 +19,14 @@ function App() {
     count, setCount
   }
   return (
-    // <CONTEXT_CONTAINER.Provider value={value}>
-    //   <div>
-    //     <Parent />
-    //   </div>
-    // </CONTEXT_CONTAINER.Provider>
     <div>
-      {/* <ShortForm /> */}
-      {/* <Counter /> */}
-      <Myform />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/form" element={<Myform />}></Route>
+          <Route path="*" element={<Error />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
