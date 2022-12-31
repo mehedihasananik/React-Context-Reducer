@@ -1,9 +1,42 @@
-const Newform = () => {
+import { useReducer } from "react";
+import { act } from "react-dom/test-utils";
+
+const Myform = () => {
+
+  const initiaState = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    gender: "",
+    education: "",
+    quantity: 0,
+    feedback: "",
+    term: false
+  }
+
+  const reducer = (state, action) => {
+
+    if (action.type === "INPUT") {
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value
+      }
+    }
+  }
+
+
+  const [state, dispatch] = useReducer(reducer, initiaState)
+
+  const submit = (event) => {
+    event.preventDefault();
+    console.log(state);
+  }
+
   return (
     <div className="text-center">
       <form
         className=''
-
+        onSubmit={submit}
       >
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='firstName'>
@@ -13,7 +46,7 @@ const Newform = () => {
             type='text'
             name='firstName'
             id='firstName'
-
+            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -24,7 +57,7 @@ const Newform = () => {
             type='text'
             name='lastName'
             id='lastName'
-
+            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -35,7 +68,7 @@ const Newform = () => {
             type='email'
             name='email'
             id='email'
-
+            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
@@ -47,7 +80,7 @@ const Newform = () => {
                 id='male'
                 name='gender'
                 value='male'
-
+                onClick={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
               />
               <label className='ml-2 text-lg' for='male'>
                 Male
@@ -59,7 +92,7 @@ const Newform = () => {
                 id='female'
                 name='gender'
                 value='female'
-
+                onClick={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
               />
               <label className='ml-2 text-lg' for='female'>
                 Female
@@ -71,7 +104,7 @@ const Newform = () => {
                 id='other'
                 name='gender'
                 value='other'
-
+                onClick={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
               />
               <label className='ml-2 text-lg' for='other'>
                 Other
@@ -86,7 +119,7 @@ const Newform = () => {
           <select
             name='education'
             id='education'
-
+            onChange={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           >
             <option value='SSC'>SSC</option>
             <option value='HSC'>HSC</option>
@@ -117,7 +150,7 @@ const Newform = () => {
             id='feedback'
             cols='30'
             rows='4'
-
+            onBlur={(e) => dispatch({ type: "INPUT", payload: { name: e.target.name, value: e.target.value } })}
           ></textarea>
         </div>
 
@@ -145,4 +178,4 @@ const Newform = () => {
   );
 }
 
-export default Newform;
+export default Myform;

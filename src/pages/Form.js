@@ -11,7 +11,7 @@ const Form = () => {
     education: "",
     quantity: 0,
     feedback: "",
-    term: "",
+    term: "false",
 
   }
   const reducer = (state, action) => {
@@ -20,6 +20,11 @@ const Form = () => {
         return {
           ...state,
           [action.payload.name]: action.payload.value
+        };
+      case "TOGGLE":
+        return {
+          ...state,
+          term: state.term
         }
       default:
         return state
@@ -163,7 +168,8 @@ const Form = () => {
               type='checkbox'
               name='term'
               id='terms'
-
+              onClick={() => dispatch({ type: "TOGGLE" })}
+              disable={!state.term}
             />
             <label for='terms'>I agree to terms and conditions</label>
           </div>
