@@ -1,3 +1,4 @@
+import { useReducer } from "react";
 import { useContext } from "react";
 import { createContext, useEffect, useState } from "react";
 
@@ -5,6 +6,10 @@ const PRODUCT_CONTEXT = createContext()
 
 const ProductProvider = ({ children }) => {
   const [data, setData] = useState([])
+
+  const [] = useReducer(reduce, initialState)
+
+
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
@@ -15,7 +20,7 @@ const ProductProvider = ({ children }) => {
   const value = {
     data,
   }
-  console.log(data)
+
   return (
     <PRODUCT_CONTEXT.Provider value={value}>
       {children}
