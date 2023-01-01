@@ -3,12 +3,6 @@ import React, { useEffect } from "react";
 const Home = () => {
 
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(data => console.log(data.slice(0, 10)))
-  });
-
 
 
 
