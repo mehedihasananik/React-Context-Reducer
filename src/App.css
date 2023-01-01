@@ -36,12 +36,3 @@
     transform: rotate(360deg);
   }
 }
-.nav-item a {
-  text-decoration: none;
-}
-a:hover {
-  color: white;
-}
-a.active {
-  color: red;
-}
