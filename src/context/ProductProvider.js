@@ -1,24 +1,29 @@
 import { useReducer } from "react";
 import { useContext } from "react";
 import { createContext, useEffect, useState } from "react";
+import { actionTypes } from "../state/actionTypes";
+import { initialState, productReducer } from "../state/ProductReducer";
 
 const PRODUCT_CONTEXT = createContext()
 
 const ProductProvider = ({ children }) => {
   const [data, setData] = useState([])
 
-  const [] = useReducer(reduce, initialState)
+  const [state, dispatch] = useReducer(productReducer, initialState)
 
 
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    dispatch({ type: actionTypes.FETCH_START })
+    fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
-      .then(data => setData(data.slice(0, 10)))
+      .then(data => dispatch({ type: actionTypes.FETCH_SUCCESS, payload: data })).catch(() => {
+        dispatch({ type: actionTypes.FETCH_ERROR })
+      })
   }, []);
 
   const value = {
-    data,
+    state, dispatch
   }
 
   return (
