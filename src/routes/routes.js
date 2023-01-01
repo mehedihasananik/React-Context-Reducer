@@ -5,6 +5,7 @@ import Cart from "../pages/Cart";
 import Home from "../pages/Home";
 import TopRated from "../pages/TopRated";
 
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,7 @@ const routes = createBrowserRouter([
         path: "cart",
         element: <Cart />,
       },
+
     ],
   },
 ]);
