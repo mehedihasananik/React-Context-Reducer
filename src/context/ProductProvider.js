@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { createContext, useEffect, useState } from "react";
 
 const PRODUCT_CONTEXT = createContext()
@@ -20,6 +21,10 @@ const ProductProvider = ({ children }) => {
       {children}
     </PRODUCT_CONTEXT.Provider>
   );
+}
+export const useProducts = () => {
+  const context = useContext(PRODUCT_CONTEXT);
+  return context;
 }
 
 export default ProductProvider;
