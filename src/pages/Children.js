@@ -13,6 +13,9 @@ const Children = () => {
       <Button onClick={() => setCount((prev) => prev - 1)} varient="outline-primary">
         -
       </Button>
+      <Button onClick={() => setCount((prev) => prev - 1)} varient="outline-primary">
+        -
+      </Button>
     </div>
   );
 }
